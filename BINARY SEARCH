@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+
+int binarySearch(int arr[], int n, int key) {
+    int low = 0;
+    int high = n - 1;
+    int comparisons = 0;
+    
+    while (low <= high) {
+        comparisons++;
+        
+        if (low == high && arr[low] == key) {
+            cout << "Present ";
+            return comparisons;
+        }
+        
+        int mid = (low + high) / 2;
+        if (arr[mid] == key) {
+            cout << "Present ";
+            return comparisons;
+        }
+        else if (arr[mid] > key) {
+            high = mid - 1;
+        }
+        else {
+            low = mid + 1;
+        }
+    }
+    cout << "Not Present ";
+    return comparisons;
+}
+
+int main() {
+    int t;
+    cin >> t;
+    
+    while (t--) {
+        int n, key;
+        cin >> n;
+        int arr[n];
+        
+        for (int i = 0; i < n; i++) {
+            cin >> arr[i];
+        }
+        
+        cin >> key;
+        int comparisons = binarySearch(arr, n, key);
+        cout << comparisons << endl;
+    }
+    
+    return 0;
+}
+
+
+
+INPUT:-
+3 
+5
+12 23 36 39 41
+41
+8
+21 39 40 45 51 54 68 72
+69
+10
+101 246 438 561 796 896 899 4644 7999 8545 
+7999
+
+
+
+OUTPUT:-
+Present 3
+Not Present 4
+Present 3
