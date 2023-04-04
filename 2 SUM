@@ -1,0 +1,61 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--) 
+    {
+        int n,key;
+        cin>>n;
+        int arr[n];
+        for(int i=0;i<n;i++) 
+        {
+            cin>>arr[i];
+        }
+        cin>>key;
+        sort(arr,arr+n);
+        int i=0,j=n-1;
+        bool found=false;
+        while(i<j) 
+        {
+            if(arr[i]+arr[j]==key)
+            {
+                cout<<arr[i]<<" "<<arr[j]<<endl;
+                found=true;
+                break;
+            }
+            else if(arr[i]+arr[j]>key)
+            {
+                j--;
+            }
+            else
+            {
+                i++;
+            }
+        }
+        if (!found)
+        {
+            cout<<"No Such Element Exist"<<endl;
+        }
+    }
+    return 0;
+}
+
+
+
+INPUT:-
+2
+10
+64 28 97 40 12 72 84 24 38 10
+50
+15 
+56 10 72 91 29 3 41 45 61 20 11 39 9 12 94
+302
+
+
+OUTPUT:-
+10 40
+No Such Element Exist
